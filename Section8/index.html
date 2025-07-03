@@ -329,7 +329,116 @@ the velocities around the jet are relativistic.</p>
 <div style="text-align: center;">
     <p>Figure 62: Additional plots to confirm the existence of an incipient jet</p>
 </div>
-              
+
+<div style="display: flex; justify-content: center; align-items: center;">
+  <a href="https://github.com/tsokaros/VisualizationGuideDocumentation.git">https://github.com/tsokaros/VisualizationGuideDocumentation.git</a>
+</div>
+<p><br></p>
+
+<h2 id="plotting-workflow-on-cocal">Plotting Workflow on COCAL</h2>
+
+<p>This section outlines the steps to visualize binary neutron star data from COCAL using VisIt. Follow this sequence to ensure a consistent and successful plotting process.</p>
+
+<h3>Prepare Output Directory</h3>
+<p>Navigate to your working directory and create or enter the <code>COCAL_output</code> folder:</p>
+
+<pre><code>mkdir -p COCAL_output
+cd COCAL_output
+</code></pre>
+
+<p><b>Link or Copy Required Data Files:</b></p>
+<p>Ensure the following key COCAL output files are present: <b>rnsflu_3D.las</b>, <b>rnsgrids_3D.las</b>, and any other relevant <code>.las</code> files.</p>
+
+<pre><code>ln -s /path/to/rnsflu_3D.las .
+ln -s /path/to/rnsgrids_3D.las .
+</code></pre>
+
+<h3>Set Up VisIt Color Table</h3>
+<p>Copy the color table <code>bhbhdisk_pink.ct</code> into your VisIt config directory:</p>
+
+<pre><code>cp /path/to/visitconfigs/ctandxmlsbhdisks/bhbhdisk.ct ~/.visit/
+</code></pre>
+
+<h3>Source the Parameters File</h3>
+<p>The following code is a default <code>params</code> file for the binary neutron star:</p>
+
+<pre><code>#root:          full path to folder
+root=$PWD
+
+#data           bht, bns, rns, mrns
+data="bns"
+
+#cartesian grid size
+x_min=-25.0
+x_max=25.0
+y_min=-25.0
+y_max=25.0
+z_min=-25.0
+z_max=25.0
+
+#resolution
+res=200
+
+#COCAL output directory
+output_dir=$root/COCAL_output
+
+#COCAL reader directory
+reader_dir=$root/COCAL_reader
+</code></pre>
+
+<div style="text-align: center;"><code>params file for binary neutron star</code></div>
+
+<p>The <code>params</code> file contains important initial configuration:</p>
+<ul>
+    <li>Which variables to plot: For Binary Neutron Stars, set <code>data="bns"</code></li>
+    <li>Grid size and resolution: Defines Cartesian bounds and sampling density</li>
+    <li>Output and reader paths (usually left unchanged)</li>
+</ul>
+
+<p>Run it by sourcing the file each time you open a new terminal:</p>
+<pre><code>. params
+</code></pre>
+
+<h3>Run the Data Reader</h3>
+<p>This will interpolate raw data and convert it into VisIt-compatible formats. Usually no need to modify <code>run_reader.sh</code>.</p>
+
+<p>To run normally:</p>
+<pre><code>. run_reader.sh
+</code></pre>
+
+<p>Or run in background and save logs:</p>
+<pre><code>. run_reader.sh &gt;&amp; log.txt &amp;
+</code></pre>
+
+<p>Outputs will include:</p>
+<ul>
+    <li><b>data.txt</b>: Raw interpolated values</li>
+    <li><b>plot.3d</b>: For 2D plotting</li>
+    <li><b>plot_data.h5</b>: HDF5 file for VisIt</li>
+</ul>
+
+<h3>Create the Plot (Using VisIt)</h3>
+<p>Do not run <code>visit_plot.py</code> directly. Instead, use the wrapper script:</p>
+
+<pre><code>. run_visit_script.sh
+</code></pre>
+
+<p>This script loads <code>visit_plot.py</code>, opens VisIt, and applies the visualization parameters. Ensure your VisIt version matches the one used in the script.</p>
+
+<h3>Tuning the Plot Appearance</h3>
+<ul>
+    <li>Adjust <code>Pseudo.min</code> and <code>Pseudo.max</code> in <code>visit_plot.py</code></li>
+    <li>Change the colortable in <code>visit_plot.py</code></li>
+    <li>Modify isosurface/pseudocolor settings in XML files inside <code>visitconfigs/ctandxmlsbhdisks/</code></li>
+</ul>
+
+<h3>Tips to Keep in Mind</h3>
+<ul>
+    <li>Always source <code>params</code> before starting</li>
+    <li>Ensure <code>.las</code> files are updated if you rerun COCAL</li>
+    <li>If VisIt crashes or plots nothing, double-check your color tables and HDF5 output</li>
+</ul>
+
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
