@@ -80,6 +80,24 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#additional-plots-after-merger">Additional Plots After Merger</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#plotting-cocal-id-with-visit">Plotting COCAL ID with VisIt</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#prepare-output-directory">Prepare Output Directory</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#set-up-visit-color-table">Set Up VisIt Color Table</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#source-the-parameters-file">Source the Parameters File</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#run-the-data-reader">Run the Data Reader</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#create-the-plot-using-visit">Create the Plot (Using VisIt)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#tuning-the-plot-appearance">Tuning the Plot Appearance</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#tips-need-to-be-cared">Tips need to be cared</a>
+    </li>
+        </ul>
+    </li>
     </ul>
                 </li>
               </ul>
@@ -330,111 +348,97 @@ the velocities around the jet are relativistic.</p>
     <p>Figure 62: Additional plots to confirm the existence of an incipient jet</p>
 </div>
 
-<p><br></p>
-<h2 id="plotting-workflow-on-cocal">Plotting COCAL ID with VisIt</h2>
-
+<h2 id="plotting-cocal-id-with-visit">Plotting COCAL ID with VisIt</h2>
 <p>This section outlines the steps to visualize binary neutron star data from COCAL using VisIt. Follow this sequence to ensure a consistent and successful plotting process.</p>
-
-<h3>Prepare Output Directory</h3>
-<p>Navigate to your working directory and create or enter the <code>COCAL_output</code> folder:</p>
-
+<h3 id="prepare-output-directory">Prepare Output Directory</h3>
+<p>Navigate to your working directory and create or enter the COCAL_output folder:</p>
 <pre><code>mkdir -p COCAL_output
 cd COCAL_output
 </code></pre>
-
-<p><b>Link or Copy Required Data Files:</b></p>
-<p>Ensure the following key COCAL output files are present: <b>rnsflu_3D.las</b>, <b>rnsgrids_3D.las</b>, and any other relevant <code>.las</code> files.</p>
-
+<p>Link or Copy Required Data Files:
+Ensure the following key COCAL output files are present: <b>rnsflu_3D.las, rnsgrids_3D.las</b>, and any other relevant <code>.las</code> files</p>
+<p>You can either softlink or copy them:</p>
 <pre><code>ln -s /path/to/rnsflu_3D.las .
 ln -s /path/to/rnsgrids_3D.las .
 </code></pre>
-
-<h3>Set Up VisIt Color Table</h3>
-<p>Copy the color table <code>bhbhdisk_pink.ct</code> into your VisIt config directory:</p>
-
+<h3 id="set-up-visit-color-table">Set Up VisIt Color Table</h3>
+<p>Copy the color table <b>bhbhdisk_pink.ct</b> into your VisIt config directory:</p>
 <pre><code>cp /path/to/visitconfigs/ctandxmlsbhdisks/bhbhdisk.ct ~/.visit/
 </code></pre>
-
-<h3>Source the Parameters File</h3>
-<p>The following code is a default <code>params</code> file for the binary neutron star:</p>
-
+<h3 id="source-the-parameters-file">Source the Parameters File</h3>
+<p>The following code is a default params file for the binary neutron star</p>
 <pre><code>#root:          full path to folder
 root=$PWD
 
 #data           bht, bns, rns, mrns
-data="bns"
+data=&quot;bns&quot;
 
 #cartesian grid size
 x_min=-25.0
 x_max=25.0
+
 y_min=-25.0
 y_max=25.0
+
 z_min=-25.0
 z_max=25.0
 
 #resolution
 res=200
 
-#COCAL output directory
+#COCAl output directory     Should be $root/COCAL_output but change if needed
 output_dir=$root/COCAL_output
 
-#COCAL reader directory
+#COCAL reader directory      Should be $root/COCAL_r陈丁。。eader but change if needed
 reader_dir=$root/COCAL_reader
 </code></pre>
-
-<div style="text-align: center;"><code>params file for binary neutron star</code></div>
-
+<p style="text-align: center;"><code>params file for binary neutron star</code></p>
 <p>The <code>params</code> file contains important initial configuration:</p>
 <ul>
-    <li>Which variables to plot: For Binary Neutron Stars, set <code>data="bns"</code></li>
-    <li>Grid size and resolution: Defines Cartesian bounds and sampling density</li>
-    <li>Output and reader paths (usually left unchanged)</li>
+    <li>Which variables to plot: For Binary Neutron Stars, make data equal to 'bns'</li>
+    <li>Grid size and resolution: Grid size controls the bounds of the Cartesian grid, and Resolution controls number of points per axis</li>
+    <li>Output and Reader path (for most of time, these should not be changed)</li>
 </ul>
 
-<p>Run it by sourcing the file each time you open a new terminal:</p>
+<p>Run it by sourcing the file every time you open a new terminal:</p>
 <pre><code>. params
 </code></pre>
-
-<h3>Run the Data Reader</h3>
-<p>This will interpolate raw data and convert it into VisIt-compatible formats. Usually no need to modify <code>run_reader.sh</code>.</p>
-
+<h3 id="run-the-data-reader">Run the Data Reader</h3>
+<p>This will interpolate the raw data and convert it into formats compatible with VisIt. You do not need to edit <code>run_reader.sh</code> for most of time.</p>
 <p>To run normally:</p>
 <pre><code>. run_reader.sh
 </code></pre>
-
-<p>Or run in background and save logs:</p>
+<p>Or, to run in background and save logs so that you can check any errors in the future:</p>
 <pre><code>. run_reader.sh &gt;&amp; log.txt &amp;
 </code></pre>
-
 <p>Outputs will include:</p>
 <ul>
     <li><b>data.txt</b>: Raw interpolated values</li>
-    <li><b>plot.3d</b>: For 2D plotting</li>
+    <li><b>plot.3d</b>: For quick 2D plotting</li>
     <li><b>plot_data.h5</b>: HDF5 file for VisIt</li>
 </ul>
 
-<h3>Create the Plot (Using VisIt)</h3>
+<h3 id="create-the-plot-using-visit">Create the Plot (Using VisIt)</h3>
 <p>Do not run <code>visit_plot.py</code> directly. Instead, use the wrapper script:</p>
-
 <pre><code>. run_visit_script.sh
 </code></pre>
-
-<p>This script loads <code>visit_plot.py</code>, opens VisIt, and applies the visualization parameters. Ensure your VisIt version matches the one used in the script.</p>
-
-<h3>Tuning the Plot Appearance</h3>
+<p>This script loads <code>visit_plot.py</code>, opens the VisIt, and applies the visualization parameters written in <code>visit_plot.py</code>.</p>
+<p>Ensure that the VisIt version used in the script matches the one installed on your system.</p>
+<h3 id="tuning-the-plot-appearance">Tuning the Plot Appearance</h3>
+<p>If your image doesn't look good:</p>
 <ul>
-    <li>Adjust <code>Pseudo.min</code> and <code>Pseudo.max</code> in <code>visit_plot.py</code></li>
-    <li>Change the colortable in <code>visit_plot.py</code></li>
-    <li>Modify isosurface/pseudocolor settings in XML files inside <code>visitconfigs/ctandxmlsbhdisks/</code></li>
+    <li>Adjust <b>Pseudo.min</b> and <b>Pseudo.max</b> in <code>visit_plot.py</code></li>
+    <li>Adjust the Colortable you use in <code>visit_plot.py</code></li>
+    <li>Modify the isosurface and pseudocolor settings in the <code>.xml</code> file (typically found in visitconfigs/ctandxmlsbhdisks/)</li>
 </ul>
 
-<h3>Tips to Keep in Mind</h3>
+<h3 id="tips-need-to-be-cared">Tips need to be cared</h3>
 <ul>
-    <li>Always source <code>params</code> before starting</li>
-    <li>Ensure <code>.las</code> files are updated if you rerun COCAL</li>
-    <li>If VisIt crashes or plots nothing, double-check your color tables and HDF5 output</li>
+<li>Always source <code>params</code> before running anything in a new shell.</li>
+<li>Make sure <code>.las</code> files are updated if re-running COCAL.</li>
+<li>If VisIt crashes or plots blank images, double-check your color tables and hdf5 output.</li>
 </ul>
-
+              
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
