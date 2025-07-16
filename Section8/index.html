@@ -350,28 +350,30 @@ the velocities around the jet are relativistic.</p>
 
 <h2 id="plotting-cocal-id-with-visit">Plotting COCAL ID with VisIt</h2>
 <p>This section outlines the steps to visualize binary neutron star data from COCAL using VisIt. Follow this sequence to ensure a consistent and successful plotting process.</p>
-<h3 id="prepare-output-directory">Prepare Output Directory</h3>
+
+<p><b>i) Prepare Output Directory</b></p>
 <p>Navigate to your working directory and create or enter the COCAL_output folder:</p>
 <pre><code>mkdir -p COCAL_output
 cd COCAL_output
 </code></pre>
-<p>Link or Copy Required Data Files:
-Ensure the following key COCAL output files are present: <b>rnsflu_3D.las, rnsgrids_3D.las</b>, and any other relevant <code>.las</code> files</p>
+<p>Link or copy required data files: ensure the following key COCAL output files are present: <b>rnsflu_3D.las, rnsgrids_3D.las</b>, and any other relevant <code>.las</code> files.</p>
 <p>You can either softlink or copy them:</p>
 <pre><code>ln -s /path/to/rnsflu_3D.las .
 ln -s /path/to/rnsgrids_3D.las .
 </code></pre>
-<h3 id="set-up-visit-color-table">Set Up VisIt Color Table</h3>
+
+<p><b>ii) Set Up VisIt Color Table</b></p>
 <p>Copy the color table <b>bhbhdisk_pink.ct</b> into your VisIt config directory:</p>
 <pre><code>cp /path/to/visitconfigs/ctandxmlsbhdisks/bhbhdisk.ct ~/.visit/
 </code></pre>
-<h3 id="source-the-parameters-file">Source the Parameters File</h3>
-<p>The following code is a default params file for the binary neutron star</p>
+
+<p><b>iii) Source the Parameters File</b></p>
+<p>Create a <code>params</code> file with the following content (example for binary neutron star):</p>
 <pre><code>#root:          full path to folder
 root=$PWD
 
 #data           bht, bns, rns, mrns
-data=&quot;bns&quot;
+data="bns"
 
 #cartesian grid size
 x_min=-25.0
@@ -386,58 +388,57 @@ z_max=25.0
 #resolution
 res=200
 
-#COCAl output directory     Should be $root/COCAL_output but change if needed
+#COCAL output directory     Should be $root/COCAL_output but change if needed
 output_dir=$root/COCAL_output
 
-#COCAL reader directory      Should be $root/COCAL_r陈丁。。eader but change if needed
+#COCAL reader directory      Should be $root/COCAL_reader but change if needed
 reader_dir=$root/COCAL_reader
 </code></pre>
 <p style="text-align: center;"><code>params file for binary neutron star</code></p>
-<p>The <code>params</code> file contains important initial configuration:</p>
-<ul>
-    <li>Which variables to plot: For Binary Neutron Stars, make data equal to 'bns'</li>
-    <li>Grid size and resolution: Grid size controls the bounds of the Cartesian grid, and Resolution controls number of points per axis</li>
-    <li>Output and Reader path (for most of time, these should not be changed)</li>
-</ul>
-
 <p>Run it by sourcing the file every time you open a new terminal:</p>
 <pre><code>. params
 </code></pre>
-<h3 id="run-the-data-reader">Run the Data Reader</h3>
-<p>This will interpolate the raw data and convert it into formats compatible with VisIt. You do not need to edit <code>run_reader.sh</code> for most of time.</p>
-<p>To run normally:</p>
+
+<p><b>iv) Run the Data Reader</b></p>
+<p>This will interpolate the raw data and convert it into formats compatible with VisIt. Usually you don’t need to edit <code>run_reader.sh</code>.</p>
+<p>Run normally:</p>
 <pre><code>. run_reader.sh
 </code></pre>
-<p>Or, to run in background and save logs so that you can check any errors in the future:</p>
+<p>Or run in background and save logs:</p>
 <pre><code>. run_reader.sh &gt;&amp; log.txt &amp;
 </code></pre>
-<p>Outputs will include:</p>
+<p>Outputs include:</p>
 <ul>
     <li><b>data.txt</b>: Raw interpolated values</li>
     <li><b>plot.3d</b>: For quick 2D plotting</li>
     <li><b>plot_data.h5</b>: HDF5 file for VisIt</li>
 </ul>
 
-<h3 id="create-the-plot-using-visit">Create the Plot (Using VisIt)</h3>
+<p><b>v) Create the Plot (Using VisIt)</b></p>
 <p>Do not run <code>visit_plot.py</code> directly. Instead, use the wrapper script:</p>
 <pre><code>. run_visit_script.sh
 </code></pre>
-<p>This script loads <code>visit_plot.py</code>, opens the VisIt, and applies the visualization parameters written in <code>visit_plot.py</code>.</p>
-<p>Ensure that the VisIt version used in the script matches the one installed on your system.</p>
-<h3 id="tuning-the-plot-appearance">Tuning the Plot Appearance</h3>
-<p>If your image doesn't look good:</p>
+<p>This script loads <code>visit_plot.py</code>, opens VisIt, and applies the visualization parameters written in <code>visit_plot.py</code>. Ensure the VisIt version used in the script matches your installed version.</p>
+
+<p><b>vi) Tuning the Plot Appearance</b></p>
+<p>If your image doesn’t look right:</p>
 <ul>
     <li>Adjust <b>Pseudo.min</b> and <b>Pseudo.max</b> in <code>visit_plot.py</code></li>
-    <li>Adjust the Colortable you use in <code>visit_plot.py</code></li>
-    <li>Modify the isosurface and pseudocolor settings in the <code>.xml</code> file (typically found in visitconfigs/ctandxmlsbhdisks/)</li>
+    <li>Change the color table in <code>visit_plot.py</code></li>
+    <li>Modify isosurface and pseudocolor settings in the <code>.xml</code> file (usually in visitconfigs/ctandxmlsbhdisks/)</li>
 </ul>
 
-<h3 id="tips-need-to-be-cared">Tips need to be cared</h3>
+<p><b>vii) Tips to Keep in Mind</b></p>
 <ul>
-<li>Always source <code>params</code> before running anything in a new shell.</li>
-<li>Make sure <code>.las</code> files are updated if re-running COCAL.</li>
-<li>If VisIt crashes or plots blank images, double-check your color tables and hdf5 output.</li>
+    <li>Always source <code>params</code> before running anything in a new shell</li>
+    <li>Update <code>.las</code> files if you re-run COCAL</li>
+    <li>If VisIt crashes or shows blank images, check your color tables and hdf5 output</li>
 </ul>
+
+<p><b>Bindary Neutron Star Image</b></p>
+<img src="../img/NSNS/bns_cut_0072.png" alt="Binary Neutron Star Plot" style="max-width: 100%; height: auto; border: 1px solid #ccc; border-radius: 8px; margin: 10px 0;">
+
+
               
             </div>
           </div><footer>
