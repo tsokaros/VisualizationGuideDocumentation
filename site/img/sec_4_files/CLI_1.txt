@@ -1,3 +1,0 @@
->>> OpenDatabase("/path/to/test_vector.vtk")
->>> AddPlots("Vector", "test_vec")
->>> DrawPlots()

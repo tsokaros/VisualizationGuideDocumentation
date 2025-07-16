@@ -1,3 +1,0 @@
-v = VolumeAttributes()
-LoadAttribute('/path/to/my_volume.xml', v)
-SetPlotOptions(v)
