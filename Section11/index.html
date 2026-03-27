@@ -8,6 +8,13 @@
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+    <script>
+        var mkdocs_page_name = "Neutron Star with Accretion Disk";
+        var mkdocs_page_input_path = "Section11.md";
+        var mkdocs_page_url = null;
+    </script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
     <script>hljs.highlightAll();</script> 
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -23,40 +30,65 @@
 <body class="wy-body-for-nav" role="document">
   <div class="wy-grid-for-nav">
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
-        <div class="wy-side-scroll">
-            <div class="wy-side-nav-search">
-                <a href=".." class="icon icon-home"> The Illinois Numerical Relativity Visualization Primer</a>
-            </div>
-            <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="..">Home</a></li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="#">Neutron Star Case Study</a>
-                        <ul class="current">
-                            <li class="toctree-l2"><a class="reference internal" href="#plotting-workflow-on-cocal">Plotting Workflow on COCAL</a></li>
-                            <li class="toctree-l2"><a class="reference internal" href="#isosurface-opacity-density">Isosurface and Density Settings</a></li>
-                            <li class="toctree-l2"><a class="reference internal" href="#normalized-densities">Normalized Densities</a></li>
-                            <li class="toctree-l2"><a class="reference internal" href="#adding-spin-arrow">Adding Spin Arrow</a></li>
-                        </ul>
-                    </li>
-                </ul>
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+            <a href=".." class="icon icon-home"> The Illinois Numerical Relativity Visualization Primer</a>
+            <div role="search">
+              <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+                  <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+              </form>
             </div>
         </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+            <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a></li>
+                <li class="toctree-l1"><a class="reference internal" href="../Section1/">Introduction</a></li>
+                <li class="toctree-l1"><a class="reference internal" href="../Section6/">Magnetars</a></li>
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Neutron Star with Accretion Disk</a>
+                    <ul class="current">
+                        <li class="toctree-l2"><a class="reference internal" href="#plotting-workflow-on-cocal">Plotting Workflow on COCAL</a></li>
+                        <li class="toctree-l2"><a class="reference internal" href="#isosurface-opacity-and-density-range-settings">Isosurface and Opacity Settings</a></li>
+                        <li class="toctree-l2"><a class="reference internal" href="#normalized-densities">Normalized Densities</a></li>
+                        <li class="toctree-l2"><a class="reference internal" href="#log-normalized-densities">Log Normalized Densities</a></li>
+                        <li class="toctree-l2"><a class="reference internal" href="#adding-spin-arrow">Adding Spin Arrow</a></li>
+                    </ul>
+                </li>
+                <li class="toctree-l1"><a class="reference internal" href="../References/">References</a></li>
+            </ul>
+        </div>
+      </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">The Illinois Numerical Relativity Visualization Primer</a>
+      </nav>
       <div class="wy-nav-content">
         <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+            <ul class="wy-breadcrumbs">
+              <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+              <li class="breadcrumb-item active">Neutron Star with Accretion Disk</li>
+            </ul>
+            <hr/>
+          </div>
+
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
-
+              
               <h1 id="case-study-neutron-star-with-accretion-disk">Case Study: Neutron Star with Accretion Disk</h1>
               <p>In this case study we examine the visualization of a neutron star–disk system using VisIt. The purpose of this section is to document the plotting workflow and the visualization settings used to generate reproducible figures. The data used here correspond to initial data of a rotating neutron star surrounded by an accretion disk.</p>
               
+              <p>In this tutorial we primarily demonstrate the procedure using the Anvil GUI, which was the environment used for this case. Corresponding CLI commands are also provided where applicable.</p>
+
               <p>The dataset used in this section was loaded from:</p>
               <ul>
                   <li><code>plot_data_axisym_new_600.h5</code></li>
                   <li><code>plot_data_axisym_norm_600.h5</code></li>
               </ul>
+              <p>These files can be found on Riemann in the following directory: <code>/data/shared/ozhao_nst_axisym_norm.h5</code></p>
 
               <p>For this system we generate three types of visualizations:</p>
               <ul>
@@ -67,56 +99,105 @@
 
               <h2 id="plotting-workflow-on-cocal">Plotting Workflow on COCAL</h2>
               <h3 id="spherical-to-cartesian-conversion">Spherical to Cartesian Conversion</h3>
-              <p>Since COCAL outputs initial data in spherical coordinates, to plot it in VisIt, we need to convert the data into Cartesian coordinates. The code for doing so can be found on GitHub in <code>Illinois-Relativity-Group/COCAL_Cartesian</code>.</p>
+              <p>Since COCAL outputs initial data in spherical coordinates, to plot it in VisIt, we need to convert the data into Cartesian coordinates. The code for doing so can be found on GitHub in <code>Illinois-Relativity-Group/COCAL_Cartesian</code>. The repository also includes the corresponding code for converting text files into HDF5 format.</p>
 
               <h3 id="plot-components">Plot Components</h3>
               <p>The visualization of this case was constructed using the following VisIt pipeline:</p>
               <ul>
-                  <li><strong>Pseudocolor</strong> plot of <code>rho_ns</code> or <code>rho_disk</code> variables.</li>
-                  <li><strong>Isosurface</strong> operator applied to the density plots.</li>
-                  <li><strong>Vector</strong> plot of the neutron star spin.</li>
+                  <li><strong>Pseudocolor</strong> plot of <code>rho_ns</code> (or <code>rho_ns_norm</code>, <code>rho_ns_log_norm</code>)</li>
+                  <li><strong>Pseudocolor</strong> plot of <code>rho_disk</code> (or <code>rho_disk_norm</code>, <code>rho_disk_log_norm</code>)</li>
+                  <li><strong>Isosurface</strong> operator applied to the neutron star pseudocolor plot</li>
+                  <li><strong>Isosurface</strong> operator applied to the disk pseudocolor plot</li>
+                  <li><strong>Vector</strong> plot of the neutron star spin</li>
               </ul>
 
+              <div style="text-align: center;">
+                  <img src="figures/Initial_Isosurface.jpeg" alt="Figure 72: Raw isosurface visualization." width="80%">
+                  <p>Figure 72: Raw isosurface visualization of the neutron star–disk system.</p>
+              </div>
+
+              <p>First, we remove the coordinate axes and bounding boxes. In the GUI, navigate to <strong>Controls → Annotations</strong>. CLI commands are:</p>
+
               <div class="sourceCode">
-                  <pre><code class="language-python"># Example Annotation Settings
-AnnotationAtts = AnnotationAttributes()
+                  <pre><code class="language-python">AnnotationAtts = AnnotationAttributes()
 AnnotationAtts.axes3D.visible = 0
 AnnotationAtts.axes3D.triadFlag = 0
 AnnotationAtts.axes3D.bboxFlag = 0
+AnnotationAtts.userInfoFlag = 0
+AnnotationAtts.databaseInfoFlag = 0
 SetAnnotationAttributes(AnnotationAtts)</code></pre>
               </div>
 
-              <h2 id="isosurface-opacity-density">Isosurface, Opacity, and Density Range Settings</h2>
+              <p>The background color used was <code>#bdbca2</code>. Equivalent CLI commands:</p>
+
+              <div class="sourceCode">
+                  <pre><code class="language-python">AnnotationAtts.backgroundMode = AnnotationAtts.Solid
+AnnotationAtts.backgroundColor = (189, 188, 162, 255)
+SetAnnotationAttributes(AnnotationAtts)</code></pre>
+              </div>
+
+              <h2 id="isosurface-opacity-and-density-range-settings">Isosurface, Opacity, and Density Range Settings</h2>
+              
               <h3 id="isosurface-levels">Isosurface Levels</h3>
-              <p>One of the most important parameters is the <strong>number of isosurface levels</strong>, which controls how many contour shells are rendered.</p>
+              <p>Controls how many contour shells are rendered. In GUI: <strong>Isosurface operator attributes → Select by -- N level --</strong>.</p>
+              
               <div class="sourceCode">
                   <pre><code class="language-python">IsosurfaceAtts = IsosurfaceAttributes()
 IsosurfaceAtts.contourNLevels = 50
 IsosurfaceAtts.contourMethod = IsosurfaceAtts.Level
+IsosurfaceAtts.scaling = IsosurfaceAtts.Linear
 SetOperatorOptions(IsosurfaceAtts, 0, 0)</code></pre>
               </div>
 
+              <h3 id="opacity-settings">Opacity Settings</h3>
+              <p>For this example, a <strong>Ramp</strong> opacity profile was used at <code>22%</code> for the neutron star, and a <strong>Constant</strong> opacity of <code>11%</code> for the disk.</p>
+
               <h2 id="normalized-densities">Normalized Densities</h2>
-              <p>The normalized density graph follows a similar workflow. For log normalization, the specific variable used is:</p>
-              <p>$$\log_{10}\left(\frac{\rho}{\rho_{max}}\right)$$</p>
-              <p>For log normalization, a preferable limit for both color bars is $-4$ to $0$.</p>
+              <p>The normalized density graph follows a similar workflow. Final results for normalized density plots can be visualized similarly to Figure 78.</p>
+
+              <div style="text-align: center;">
+                  <img src="figures/Normalized.jpeg" alt="Figure 78: Normalized density plot" width="80%">
+                  <p>Figure 78: Normalized density plot.</p>
+              </div>
+
+              <h2 id="log-normalized-densities">Log Normalized Densities</h2>
+              <p>Specifically, this involves plotting: $$\log_{10}\left(\frac{\rho}{\rho_{max}}\right)$$</p>
+              <p>For log normalization, a preferable limit for both color bars is $-4$ to $0$. Filter the data limits in the isosurface attributes to prevent software crashes:</p>
+
+              <div class="sourceCode">
+                  <pre><code class="language-python">IsosurfaceAtts.minFlag = 1
+IsosurfaceAtts.min = -4
+IsosurfaceAtts.maxFlag = 1
+IsosurfaceAtts.max = 0
+SetOperatorOptions(IsosurfaceAtts, 0, 0)</code></pre>
+              </div>
 
               <h2 id="adding-spin-arrow">Adding Spin Arrow</h2>
-              <p>To add a vector, we utilize a VTK file. First, we only need one large vector arrow to indicate the spin of the neutron star.</p>
+              <p>Load a VTK file representing the spin vector. Set the number of vectors to 1 in <strong>Vector Plot Attributes</strong>.</p>
+
               <div class="sourceCode">
                   <pre><code class="language-python">AddPlot("Vector", "v", 1, 0)
 VectorAtts = VectorAttributes()
 VectorAtts.nVectors = 1
 VectorAtts.glyphType = VectorAtts.Arrow
 VectorAtts.scale = 120
-SetPlotOptions(VectorAtts)</code></pre>
+VectorAtts.vectorColor = (255, 0, 255, 255)
+SetPlotOptions(VectorAtts)
+DrawPlots()</code></pre>
               </div>
 
-              <p>That’s it! Thanks for reading.</p>
+              <div style="text-align: center;">
+                  <img src="figures/Raw_noCT.jpeg" alt="Figure 85: Final Plot" width="90%">
+                  <p>Figure 85: Final Plot showing the neutron star-disk system with spin vector.</p>
+              </div>
 
             </div>
           </div>
           <footer>
+            <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+                <a href="../Section10/" class="btn btn-neutral float-left" title="Gravitational Waves"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+                <a href="../References/" class="btn btn-neutral float-right" title="References">Next <span class="icon icon-circle-arrow-right"></span></a>
+            </div>
             <hr/>
             <div role="contentinfo">
               <p>Built with MkDocs using the Sphinx RTD theme.</p>
