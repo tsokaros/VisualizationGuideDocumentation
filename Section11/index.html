@@ -48,7 +48,8 @@
                 <li class="toctree-l1 current"><a class="reference internal current" href="#">Neutron Star with Accretion Disk</a>
                     <ul class="current">
                         <li class="toctree-l2"><a class="reference internal" href="#plotting-workflow-on-cocal">Plotting Workflow on COCAL</a></li>
-                        <li class="toctree-l2"><a class="reference internal" href="#isosurface-opacity-and-density-range-settings">Isosurface and Opacity Settings</a></li>
+                        <li class="toctree-l2"><a class="reference internal" href="#plot-components">Plot Components</a></li>
+                        <li class="toctree-l2"><a class="reference internal" href="#isosurface-opacity-and-density-range-settings">Isosurface, Opacity, and Density Range Settings</a></li>
                         <li class="toctree-l2"><a class="reference internal" href="#normalized-densities">Normalized Densities</a></li>
                         <li class="toctree-l2"><a class="reference internal" href="#log-normalized-densities">Log Normalized Densities</a></li>
                         <li class="toctree-l2"><a class="reference internal" href="#adding-spin-arrow">Adding Spin Arrow</a></li>
@@ -81,27 +82,39 @@
               <h1 id="case-study-neutron-star-with-accretion-disk">Case Study: Neutron Star with Accretion Disk</h1>
               <p>In this case study we examine the visualization of a neutron star–disk system using VisIt. The purpose of this section is to document the plotting workflow and the visualization settings used to generate reproducible figures. The data used here correspond to initial data of a rotating neutron star surrounded by an accretion disk.</p>
               
-              <p>In this tutorial we primarily demonstrate the procedure using the Anvil GUI, which was the environment used for this case. Corresponding CLI commands are also provided where applicable.</p>
+              <p>In this tutorial we primarily demonstrate the procedure using the Anvil GUI, which was the environment I used for this case. Corresponding CLI commands are also provided where applicable.</p>
 
               <p>The dataset used in this section was loaded from:</p>
-              <ul>
-                  <li><code>plot_data_axisym_new_600.h5</code></li>
-                  <li><code>plot_data_axisym_norm_600.h5</code></li>
-              </ul>
-              <p>These files can be found on Riemann in the following directory: <code>/data/shared/ozhao_nst_axisym_norm.h5</code></p>
+              <p><code>plot_data_axisym_new_600.h5</code> and <code>plot_data_axisym_norm_600.h5</code></p>
+              <p>These two files can be found on Riemann in the following directory:</p>
+              <p><code>/data/shared/ozhao_nst_axisym_norm.h5</code></p>
 
               <p>For this system we generate three types of visualizations:</p>
               <ul>
-                <li>Raw density plots</li>
-                <li>Normalized density plots (density divided by the maximum value)</li>
-                <li>Logarithm of the normalized density</li>
+                <li>raw density plots</li>
+                <li>normalized density plots (density divided by the maximum value)</li>
+                <li>logarithm of the normalized density</li>
               </ul>
+
+              <p>Since the first two types follow very similar procedures, we focus on two representative cases in this section:</p>
+              <ul>
+                  <li>raw density</li>
+                  <li>logarithm of the normalized density</li>
+              </ul>
+
+              <p>The main visualization consists of pseudocolor plots of the disk and neutron star, with isosurface operators applied to highlight their structures. Also, the color bars I used can be found in the GitHub repo listed above.</p>
+
+              <h1 id="isosurface-rendering-of-disk-tbw">Isosurface Rendering of Disk: TBW</h1>
+              <h1 id="volume-rendering-of-disk-tbw">Volume Rendering of Disk: TBW</h1>
+              <h1 id="magnetic-field-lines-tbw">Magnetic Field Lines: TBW</h1>
 
               <h2 id="plotting-workflow-on-cocal">Plotting Workflow on COCAL</h2>
               <h3 id="spherical-to-cartesian-conversion">Spherical to Cartesian Conversion</h3>
               <p>Since COCAL outputs initial data in spherical coordinates, to plot it in VisIt, we need to convert the data into Cartesian coordinates. The code for doing so can be found on GitHub in <code>Illinois-Relativity-Group/COCAL_Cartesian</code>. The repository also includes the corresponding code for converting text files into HDF5 format.</p>
 
-              <h3 id="plot-components">Plot Components</h3>
+              <hr/>
+
+              <h2 id="plot-components">Plot Components</h2>
               <p>The visualization of this case was constructed using the following VisIt pipeline:</p>
               <ul>
                   <li><strong>Pseudocolor</strong> plot of <code>rho_ns</code> (or <code>rho_ns_norm</code>, <code>rho_ns_log_norm</code>)</li>
@@ -111,13 +124,16 @@
                   <li><strong>Vector</strong> plot of the neutron star spin</li>
               </ul>
 
+              <p>The initial procedures should be familiar if the previous sections have been read. We therefore proceed directly to the stage where raw isosurface plots are created for both the disk and the neutron star, as shown in the figure below.</p>
+
               <div style="text-align: center;">
-                  <img src="figures/Initial_Isosurface.jpeg" alt="Figure 72: Raw isosurface visualization." width="80%">
+                  <img src="figures/Initial_Isosurface.jpeg" alt="Figure 72">
                   <p>Figure 72: Raw isosurface visualization of the neutron star–disk system.</p>
               </div>
 
-              <p>First, we remove the coordinate axes and bounding boxes. In the GUI, navigate to <strong>Controls → Annotations</strong>. CLI commands are:</p>
+              <p>Before proceeding further, we note a few visualization settings that help improve the clarity of the plots. First, we remove the coordinate axes and bounding boxes so that only the color table remains visible (the color table will also be refined later). In the VisIt GUI, this can be done by navigating to <strong>Controls → Annotations</strong> and disabling the corresponding options.</p>
 
+              <p>The corresponding CLI commands are:</p>
               <div class="sourceCode">
                   <pre><code class="language-python">AnnotationAtts = AnnotationAttributes()
 AnnotationAtts.axes3D.visible = 0
@@ -128,19 +144,52 @@ AnnotationAtts.databaseInfoFlag = 0
 SetAnnotationAttributes(AnnotationAtts)</code></pre>
               </div>
 
-              <p>The background color used was <code>#bdbca2</code>. Equivalent CLI commands:</p>
-
+              <p>The second thing is to change the background color. This can be achieved by <strong>Controls → Annotations → Colors → Background color</strong>. In this example, the background color used was <code>#bdbca2</code> for reference. The equivalent CLI commands are:</p>
               <div class="sourceCode">
-                  <pre><code class="language-python">AnnotationAtts.backgroundMode = AnnotationAtts.Solid
+                  <pre><code class="language-python">AnnotationAtts = AnnotationAttributes()
+AnnotationAtts.backgroundMode = AnnotationAtts.Solid
 AnnotationAtts.backgroundColor = (189, 188, 162, 255)
 SetAnnotationAttributes(AnnotationAtts)</code></pre>
               </div>
 
+              <p>Then, we need to adjust the view of the plot for clarity. In the GUI, this can be done by <strong>Controls → View</strong>. The settings used for the example are shown below. The equivalent CLI commands are:</p>
+              <div class="sourceCode">
+                  <pre><code class="language-python">View3DAtts = View3DAttributes()
+View3DAtts.viewNormal = (2, 10, -5)
+View3DAtts.focus = (300, 300, 300)
+View3DAtts.viewUp = (1, 0, 0)
+View3DAtts.viewAngle = 30
+View3DAtts.parallelScale = 519.615
+View3DAtts.imagePan = (0, 0)
+View3DAtts.imageZoom = 2.8
+View3DAtts.perspective = 1
+SetView3D(View3DAtts)</code></pre>
+              </div>
+
+              <p>A more detailed explanation of the different parameters can be found in the official VisIt tutorial: <a href="https://visit-sphinx-github-user-manual.readthedocs.io/en/develop/using_visit/MakingItPretty/View.html">VisIt View Tutorial</a>.</p>
+
+              <div style="text-align: center;">
+                  <img src="figures/view.png" alt="Figure 73" width="45%">
+                  <p><em>Figure 73: View Setting.</em></p>
+              </div>
+
+              <div style="text-align: center;">
+                  <img src="figures/after_setup.png" alt="Figure 74">
+                  <p>Figure 74: VisIt visualization after setup.</p>
+              </div>
+
               <h2 id="isosurface-opacity-and-density-range-settings">Isosurface, Opacity, and Density Range Settings</h2>
-              
+              <p>The first step should be loading the color tables you will be using for neutron star and disk densities.</p>
+
               <h3 id="isosurface-levels">Isosurface Levels</h3>
-              <p>Controls how many contour shells are rendered. In GUI: <strong>Isosurface operator attributes → Select by -- N level --</strong>.</p>
-              
+              <p>One of the most important parameters is the <strong>number of isosurface levels</strong>, which controls how many contour shells are rendered. In the GUI, this can be done by <strong>Isosurface operator attributes → Select by -- N level --</strong>.</p>
+
+              <div style="text-align: center;">
+                  <img src="figures/iso.jpeg" alt="Figure 75" width="55%">
+                  <p>Figure 75: GUI Isosurface Level Setting.</p>
+              </div>
+
+              <p>The settings for the CLI used in this example are shown below:</p>
               <div class="sourceCode">
                   <pre><code class="language-python">IsosurfaceAtts = IsosurfaceAttributes()
 IsosurfaceAtts.contourNLevels = 50
@@ -150,30 +199,108 @@ SetOperatorOptions(IsosurfaceAtts, 0, 0)</code></pre>
               </div>
 
               <h3 id="opacity-settings">Opacity Settings</h3>
-              <p>For this example, a <strong>Ramp</strong> opacity profile was used at <code>22%</code> for the neutron star, and a <strong>Constant</strong> opacity of <code>11%</code> for the disk.</p>
+              <p>Opacity controls how transparent the rendered surface is. In the GUI, this can be adjusted through <strong>Pseudocolor → Opacity</strong>. For this example, a <strong>Ramp</strong> opacity profile was used with a representative value around <code>22%</code> for neutron star density. For disk density, a <strong>Constant</strong> opacity around <code>11%</code> was used.</p>
 
-              <h2 id="normalized-densities">Normalized Densities</h2>
-              <p>The normalized density graph follows a similar workflow. Final results for normalized density plots can be visualized similarly to Figure 78.</p>
+              <h3 id="density-range-min-max">Density Range (Min/Max)</h3>
+              <p>Finally, you might want to play with <strong>min</strong> and <strong>max</strong> in Pseudocolor.</p>
 
               <div style="text-align: center;">
-                  <img src="figures/Normalized.jpeg" alt="Figure 78: Normalized density plot" width="80%">
-                  <p>Figure 78: Normalized density plot.</p>
+                  <img src="figures/pesudo.jpeg" alt="Figure 76" width="50%">
+                  <p>Figure 76: GUI Pseudocolor settings.</p>
+              </div>
+
+              <p>The equivalent CLI commands for Pseudocolor settings of neutron star density are shown below:</p>
+              <div class="sourceCode">
+                  <pre><code class="language-python">PseudocolorAtts = PseudocolorAttributes()
+PseudocolorAtts.minFlag = 1
+PseudocolorAtts.min = 2e-4
+PseudocolorAtts.maxFlag = 1
+PseudocolorAtts.max = 1e-3
+PseudocolorAtts.colorTableName = "ozhao_ns2"
+PseudocolorAtts.invertColorTable = 1
+PseudocolorAtts.opacityType = PseudocolorAtts.Ramp
+PseudocolorAtts.opacity = 0.223529
+SetPlotOptions(PseudocolorAtts)</code></pre>
+              </div>
+
+              <p>The equivalent CLI commands for Pseudocolor settings of disk density are:</p>
+              <div class="sourceCode">
+                  <pre><code class="language-python">PseudocolorAtts = PseudocolorAttributes()
+PseudocolorAtts.minFlag = 1
+PseudocolorAtts.min = 4e-7
+PseudocolorAtts.maxFlag = 1
+PseudocolorAtts.max = 2e-6
+PseudocolorAtts.colorTableName = "ozhao_disk2"
+PseudocolorAtts.invertColorTable = 1
+PseudocolorAtts.opacityType = PseudocolorAtts.Constant
+PseudocolorAtts.opacity = 0.117647
+SetPlotOptions(PseudocolorAtts)</code></pre>
+              </div>
+
+              <div style="text-align: center;">
+                  <img src="figures/visit0002.jpeg" alt="Figure 77">
+                  <p>Figure 77: Raw density plot</p>
+              </div>
+
+              <h2 id="normalized-densities">Normalized Densities</h2>
+              <p>As we have mentioned, the normalized density graph should follow very similarly. In case you might need the code to make a normalized density HDF5 file, here it is: <a href="https://github.com/Illinois-Relativity-Group/COCAL_Cartesian">COCAL Cartesian Repo</a>. (This also includes log normalized densities).</p>
+
+              <div style="text-align: center;">
+                  <img src="figures/Normalized.jpeg" alt="Figure 78">
+                  <p>Figure 78: Normalized density plot</p>
               </div>
 
               <h2 id="log-normalized-densities">Log Normalized Densities</h2>
-              <p>Specifically, this involves plotting: $$\log_{10}\left(\frac{\rho}{\rho_{max}}\right)$$</p>
-              <p>For log normalization, a preferable limit for both color bars is $-4$ to $0$. Filter the data limits in the isosurface attributes to prevent software crashes:</p>
+              <p>Next, we talk about another special case: log normalized density. More specifically, it means: $$\log_{10}\left(\frac{\rho}{\rho_{max}}\right)$$ for both disk and neutron star.</p>
+              
+              <p>The general pipeline still closely resembles the above, but due to the different scaling of the data, the specific settings might be a bit different. I will not be providing many CLI commands for this section since they are exactly the same as above, except for the exact parameters. The log normalized plot is somewhat slow, so more patience might be needed. Additionally, I also adjusted the isosurface limit. If you use the default setting, the software may crash (on Anvil). It is better to filter the important data beforehand.</p>
 
               <div class="sourceCode">
-                  <pre><code class="language-python">IsosurfaceAtts.minFlag = 1
+                  <pre><code class="language-python">IsosurfaceAtts = IsosurfaceAttributes()
+IsosurfaceAtts.contourMethod = IsosurfaceAtts.Level  
+IsosurfaceAtts.minFlag = 1
 IsosurfaceAtts.min = -4
 IsosurfaceAtts.maxFlag = 1
 IsosurfaceAtts.max = 0
+IsosurfaceAtts.scaling = IsosurfaceAtts.Linear  
 SetOperatorOptions(IsosurfaceAtts, 0, 0)</code></pre>
               </div>
 
+              <p>For log normalization, a preferable limit for both color bars is <code>-4</code> to <code>0</code>.</p>
+
+              <div style="text-align: center;">
+                  <img src="figures/disk_ct.jpeg" alt="Figure 79" width="70%">
+                  <p>Figure 79: GUI Pseudocolor settings for Disk.</p>
+              </div>
+
+              <div style="text-align: center;">
+                  <img src="figures/ns_ct.jpeg" alt="Figure 80" width="70%">
+                  <p>Figure 80: GUI Pseudocolor settings for Neutron Star.</p>
+              </div>
+
+              <div style="text-align: center;">
+                  <img src="figures/lognorm_noCT.jpeg" alt="Figure 81">
+                  <p>Figure 81: Log Normalized density plot</p>
+              </div>
+
               <h2 id="adding-spin-arrow">Adding Spin Arrow</h2>
-              <p>Load a VTK file representing the spin vector. Set the number of vectors to 1 in <strong>Vector Plot Attributes</strong>.</p>
+              <p>To add a vector, we need a VTK file. In my case, the VTK was trivial. To inspect the direction of the spin arrow, you might need to look up <code>rnsphyseq_v1.dat</code> or <code>nstpar.dat</code>. After adding the VTK as a vector field, here are some things to adjust.</p>
+              <p>First, we only need one large vector arrow for this case to indicate the spin of the neutron star, so set the number of vectors to 1.</p>
+
+              <div style="text-align: center;">
+                  <img src="figures/vector1.jpeg" alt="Figure 82" width="70%">
+                  <p>Figure 82: Number of Vectors.</p>
+              </div>
+
+              <div style="text-align: center;">
+                  <img src="figures/vector2.jpeg" alt="Figure 83" width="70%">
+                  <p>Figure 83: Setting color of the vector.</p>
+              </div>
+
+              <div style="text-align: center;">
+                  <img src="figures/vector3.jpeg" alt="Figure 84" width="70%">
+                  <p>Figure 84: Adjusting the size of the vector.</p>
+              </div>
 
               <div class="sourceCode">
                   <pre><code class="language-python">AddPlot("Vector", "v", 1, 0)
@@ -181,15 +308,18 @@ VectorAtts = VectorAttributes()
 VectorAtts.nVectors = 1
 VectorAtts.glyphType = VectorAtts.Arrow
 VectorAtts.scale = 120
+VectorAtts.useLegend = 0
 VectorAtts.vectorColor = (255, 0, 255, 255)
 SetPlotOptions(VectorAtts)
 DrawPlots()</code></pre>
               </div>
 
               <div style="text-align: center;">
-                  <img src="figures/Raw_noCT.jpeg" alt="Figure 85: Final Plot" width="90%">
-                  <p>Figure 85: Final Plot showing the neutron star-disk system with spin vector.</p>
+                  <img src="figures/Raw_noCT.jpeg" alt="Figure 85" width="90%">
+                  <p>Figure 85: Final Plot</p>
               </div>
+
+              <p>That's it! Thanks for reading.</p>
 
             </div>
           </div>
