@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>index</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      word-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="case-study-neutron-star-with-accretion-disk">Case Study: Neutron Star with Accretion Disk</h1>
+<p>In this case study we examine the visualization of a neutron star–disk system using VisIt. The purpose of this section is to document the plotting workflow and the visualization settings used to generate reproducible figures. The data used here correspond to initial data of a rotating neutron star surrounded by an accretion disk.</p>
+<p>In this tutorial we primarily demonstrate the procedure using the Anvil GUI, which was the environment I used for this case. Corresponding CLI commands are also provided where applicable.</p>
+<p>The dataset used in this section was loaded from</p>
+<p><code>plot_data_axisym_new_600.h5</code> and <code>plot_data_axisym_norm_600.h5</code></p>
+<p>These two files can be found on Riemann in the following directory:</p>
+<p>/data/shared/ozhao_nst_axisym_norm.h5</p>
+<p>For this system we generate three types of visualizations:</p>
+<ul>
+<li>raw density plots<br />
+</li>
+<li>normalized density plots (density divided by the maximum value)<br />
+</li>
+<li>logarithm of the normalized density</li>
+</ul>
+<p>Since the first two types follow very similar procedures, we focus on two representative cases in this section:</p>
+<ul>
+<li>raw density<br />
+</li>
+<li>logarithm of the normalized density</li>
+</ul>
+<p>The main visualization consists of pseudocolor plots of the disk and neutron star, with isosurface operators applied to highlight their structures.</p>
+<p>Also, the color bars I used can be found in the GitHub repo listed above.</p>
+<h1 id="isosurface-rendering-of-disk-tbw">Isosurface Rendering of Disk: TBW</h1>
+<h1 id="volume-rendering-of-disk-tbw">Volume Rendering of Disk: TBW</h1>
+<h1 id="magnetic-field-lines-tbw">Magnetic Field Lines: TBW</h1>
+<h1 id="plotting-workflow-on-cocal">Plotting Workflow on COCAL</h1>
+<h2 id="spherical-to-cartesian-conversion">Spherical to Cartesian Conversion</h2>
+<p>Since COCAL outputs initial data in spherical coordinates, to plot it in VisIt, we need to convert the data into Cartesian coordinates. The code for doing so can be found on GitHub in <code>Illinois-Relativity-Group/COCAL_Cartesian</code>. The repository also includes the corresponding code for converting text files into HDF5 format.</p>
+<hr />
+<h2 id="plot-components">Plot Components</h2>
+<p>The visualization of this case was constructed using the following VisIt pipeline:</p>
+<ul>
+<li><strong>Pseudocolor</strong> plot of <code>rho_ns</code> (or <code>rho_ns_norm</code>, <code>rho_ns_log_norm</code>)</li>
+<li><strong>Pseudocolor</strong> plot of <code>rho_disk</code> (or <code>rho_disk_norm</code>, <code>rho_disk_log_norm</code>)</li>
+<li><strong>Isosurface</strong> operator applied to the neutron star pseudocolor plot</li>
+<li><strong>Isosurface</strong> operator applied to the disk pseudocolor plot</li>
+<li><strong>Vector</strong> plot of the neutron star spin</li>
+</ul>
+<p>The initial procedures should be familiar if the previous sections have been read. We therefore proceed directly to the stage where raw isosurface plots are created for both the disk and the neutron star, as shown in the figure below.</p>
+<figure>
+<img src="figures/Initial_Isosurface.jpeg" alt="Initial isosurface" /><figcaption aria-hidden="true">Initial isosurface</figcaption>
+</figure>
+<div style="text-align: center;">
+<p>
+Figure 72: Raw isosurface visualization of the neutron star–disk system.
+</p>
+</div>
+<p>Before proceeding further, we note a few visualization settings that help improve the clarity of the plots. First, we remove the coordinate axes and bounding boxes so that only the color table remains visible (the color table will also be refined later).</p>
+<p>In the VisIt GUI, this can be done by navigating to</p>
+<p><strong>Controls → Annotations</strong></p>
+<p>and disabling the corresponding options.</p>
+<p>The corresponding CLI commands are:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>AnnotationAtts <span class="op">=</span> AnnotationAttributes()</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>AnnotationAtts.axes3D.visible <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>AnnotationAtts.axes3D.triadFlag <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>AnnotationAtts.axes3D.bboxFlag <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>AnnotationAtts.userInfoFlag <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>AnnotationAtts.databaseInfoFlag <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>SetAnnotationAttributes(AnnotationAtts)</span></code></pre></div>
+<p>Now your plot should look something like this.</p>
+<p>The second thing is to change the background color. This can be achieved by</p>
+<p><strong>Controls → Annotations → Colors → Background color</strong>.</p>
+<p>In this example, the background color used was #bdbca2# for reference.</p>
+<p>The equivalent CLI commands are:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>AnnotationAtts <span class="op">=</span> AnnotationAttributes()</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>AnnotationAtts.backgroundMode <span class="op">=</span> AnnotationAtts.Solid</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>AnnotationAtts.backgroundColor <span class="op">=</span> (<span class="dv">189</span>, <span class="dv">188</span>, <span class="dv">162</span>, <span class="dv">255</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>SetAnnotationAttributes(AnnotationAtts)</span></code></pre></div>
+<p>Then, we need to adjust the view of the plot for clarity. In the GUI, this can be done by</p>
+<p><strong>Controls → View</strong></p>
+<p>The settings used for the example are shown below. The equivalent CLI commands are:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>View3DAtts <span class="op">=</span> View3DAttributes()</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>View3DAtts.viewNormal <span class="op">=</span> (<span class="dv">2</span>, <span class="dv">10</span>, <span class="op">-</span><span class="dv">5</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>View3DAtts.focus <span class="op">=</span> (<span class="dv">300</span>, <span class="dv">300</span>, <span class="dv">300</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>View3DAtts.viewUp <span class="op">=</span> (<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>View3DAtts.viewAngle <span class="op">=</span> <span class="dv">30</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>View3DAtts.parallelScale <span class="op">=</span> <span class="fl">519.615</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>View3DAtts.imagePan <span class="op">=</span> (<span class="dv">0</span>, <span class="dv">0</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>View3DAtts.imageZoom <span class="op">=</span> <span class="fl">2.8</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>View3DAtts.perspective <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>SetView3D(View3DAtts)</span></code></pre></div>
+<p>A more detailed explanation of the different parameters can be found in the official VisIt tutorial:</p>
+<p>https://visit-sphinx-github-user-manual.readthedocs.io/en/develop/using_visit/MakingItPretty/View.html</p>
+<p align="center">
+<img src="figures/view.png" alt="Figure 73: View Setting." width="45%">
+</p>
+<p align="center">
+<em>Figure 73: View Setting.</em>
+</p>
+<p>Now your plot should look something like this.</p>
+<figure>
+<img src="figures/after_setup.png" alt="No annotations" /><figcaption aria-hidden="true">No annotations</figcaption>
+</figure>
+<div style="text-align: center;">
+<p>
+Figure 74: VisIt visualization after setup.
+</p>
+</div>
+<p>After the setup, we can proceed to the main procedure.</p>
+<h2 id="isosurface-opacity-and-density-range-settings">Isosurface, Opacity, and Density Range Settings</h2>
+<p>The first step should be loading the color tables you will be using for neutron star and disk densities.</p>
+<h3 id="isosurface-levels">Isosurface Levels</h3>
+<p>Then, to better emphasize the structural features of the system, several visualization parameters can be adjusted.</p>
+<p>One of the most important parameters is the <strong>number of isosurface levels</strong>, which controls how many contour shells are rendered.</p>
+<p>In the GUI, this can be done by</p>
+<p><strong>Isosurface operator attributes → Select by – N level –</strong></p>
+<div style="text-align: center;">
+<pre><code>&lt;img src=&quot;figures/iso.jpeg&quot; alt=&quot;Figure 75: GUI Isosurface Level Setting.&quot; width=&quot;55%&quot;&gt;
+&lt;p&gt;Figure 75: GUI Isosurface Level Setting.&lt;/p&gt;</code></pre>
+</div>
+<p>The settings for the CLI used in this example are shown below:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>IsosurfaceAtts <span class="op">=</span> IsosurfaceAttributes()</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>IsosurfaceAtts.contourNLevels <span class="op">=</span> <span class="dv">50</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>IsosurfaceAtts.contourMethod <span class="op">=</span> IsosurfaceAtts.Level</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>IsosurfaceAtts.scaling <span class="op">=</span> IsosurfaceAtts.Linear</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>SetOperatorOptions(IsosurfaceAtts, <span class="dv">0</span>, <span class="dv">0</span>)</span></code></pre></div>
+<h3 id="opacity-settings">Opacity Settings</h3>
+<p>The next parameter to adjust is the <strong>opacity</strong> setting.</p>
+<p>Opacity controls how transparent the rendered surface is and therefore determines how easily internal structures and overlapping surfaces can be seen.</p>
+<p>In the GUI, this can be adjusted through</p>
+<p><strong>Pseudocolor → Opacity</strong></p>
+<p>For this example, a <strong><em>Ramp</em></strong> opacity profile was used with a representative value around <code>22%</code> for neutron star density. For disk density, a <strong><em>Constant</em></strong> opacity around <code>11%</code> was used.</p>
+<h3 id="density-range-minmax">Density Range (Min/Max)</h3>
+<p>Finally, you might want to play with <strong><em>min</em></strong> and <strong><em>max</em></strong> in <strong>Pseudocolor</strong>.</p>
+<div style="text-align: center;">
+<pre><code>&lt;img src=&quot;figures/pesudo.jpeg&quot; alt=&quot;Figure 76: GUI Pseudocolor settings.&quot; width=&quot;50%&quot;&gt;
+&lt;p&gt;Figure 76: GUI Pseudocolor settings.&lt;/p&gt;</code></pre>
+</div>
+<p>The equivalent CLI commands for <strong>Pseudocolor</strong> settings of neutron star density are shown below as an example:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>PseudocolorAtts <span class="op">=</span> PseudocolorAttributes()</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>PseudocolorAtts.minFlag <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>PseudocolorAtts.<span class="bu">min</span> <span class="op">=</span> <span class="fl">2e-4</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>PseudocolorAtts.maxFlag <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>PseudocolorAtts.<span class="bu">max</span> <span class="op">=</span> <span class="fl">1e-3</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>PseudocolorAtts.colorTableName <span class="op">=</span> <span class="st">&quot;ozhao_ns2&quot;</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>PseudocolorAtts.invertColorTable <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>PseudocolorAtts.opacityType <span class="op">=</span> PseudocolorAtts.Ramp</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>PseudocolorAtts.opacity <span class="op">=</span> <span class="fl">0.223529</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>SetPlotOptions(PseudocolorAtts)</span></code></pre></div>
+<p>The equivalent CLI commands for <strong>Pseudocolor</strong> settings of disk density are:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>PseudocolorAtts <span class="op">=</span> PseudocolorAttributes()</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>PseudocolorAtts.minFlag <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>PseudocolorAtts.<span class="bu">min</span> <span class="op">=</span> <span class="fl">4e-7</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>PseudocolorAtts.maxFlag <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>PseudocolorAtts.<span class="bu">max</span> <span class="op">=</span> <span class="fl">2e-6</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>PseudocolorAtts.colorTableName <span class="op">=</span> <span class="st">&quot;ozhao_disk2&quot;</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>PseudocolorAtts.invertColorTable <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>PseudocolorAtts.opacityType <span class="op">=</span> PseudocolorAtts.Constant</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>PseudocolorAtts.opacity <span class="op">=</span> <span class="fl">0.117647</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>SetPlotOptions(PseudocolorAtts) </span></code></pre></div>
+<p>Note: the numbers and options provided are just for reference. The exact settings should be experimented with patience.</p>
+<p>Finally, your plot might look something similar to this.</p>
+<figure>
+<img src="figures/visit0002.jpeg" alt="No annotations" /><figcaption aria-hidden="true">No annotations</figcaption>
+</figure>
+<div style="text-align: center;">
+<p>
+Figure 77: Raw density plot
+</p>
+</div>
+<p>This is it for the raw density plot; all you need might be some patience to experiment.</p>
+<h2 id="normalized-densities">Normalized Densities</h2>
+<p>As we have mentioned, the normalized density graph should follow very similarly. In case you might need the code to make a normalized density HDF5 file, here it is.</p>
+<p>https://github.com/Illinois-Relativity-Group/COCAL_Cartesian</p>
+<p>(This also includes log normalized densities).</p>
+<p>Just for reference, the min and max of the color bars are shown below, and your final plot might resemble something like this. Again, this is just a reference; you will need to do a lot of experiments.</p>
+<figure>
+<img src="figures/Normalized.jpeg" alt="No annotations" /><figcaption aria-hidden="true">No annotations</figcaption>
+</figure>
+<div style="text-align: center;">
+<p>
+Figure 78: Normalized density plot
+</p>
+</div>
+<h2 id="log-normalized-densities">Log Normalized Densities</h2>
+<p>Next, we talk about another special case: log normalized density.<br />
+More specifically, it means<br />
+<span class="math display">\[
+\log_{10}(\frac{\rho}{\rho_{max}})
+\]</span> for both disk and neutron star.</p>
+<p>(For files to make HDF5 in log normalized densities, see the above section on normalized density)</p>
+<p>The general pipeline still closely resembles the above, but due to the different scaling of the data, the specific settings might be a bit different.</p>
+<p>As a note:<br />
+I will not be providing many CLI commands for this section since they should be exactly the same as above, except for the exact parameters.</p>
+<p>The purpose of this section is simply to provide a reference setting for log normalized densities, since it is quite special. Anything else would be very similar to the above.</p>
+<p>The log normalized plot is somewhat slow when you run it, so more patience might be needed. Additionally, different from above, I also adjusted the isosurface limit. If you use the default setting, the software may crash (on Anvil). It is better to filter the important data beforehand. But again, as always, experiment yourself.</p>
+<p>Below is the CLI.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>IsosurfaceAtts <span class="op">=</span> IsosurfaceAttributes()</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>IsosurfaceAtts.contourValue <span class="op">=</span> ()</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>IsosurfaceAtts.contourPercent <span class="op">=</span> ()</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>IsosurfaceAtts.contourMethod <span class="op">=</span> IsosurfaceAtts.Level  </span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>IsosurfaceAtts.minFlag <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>IsosurfaceAtts.<span class="bu">min</span> <span class="op">=</span> <span class="op">-</span><span class="dv">4</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>IsosurfaceAtts.maxFlag <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>IsosurfaceAtts.<span class="bu">max</span> <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>IsosurfaceAtts.scaling <span class="op">=</span> IsosurfaceAtts.Linear  </span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>IsosurfaceAtts.variable <span class="op">=</span> <span class="st">&quot;default&quot;</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>SetOperatorOptions(IsosurfaceAtts, <span class="dv">0</span>, <span class="dv">0</span>)</span></code></pre></div>
+<p>Another thing to adjust might be the color table limits and opacity.</p>
+<p>For log normalization, a preferable limit for both color bars is <span class="math inline">\(-4\)</span> to <span class="math inline">\(0\)</span>.</p>
+<p>Details for disk and neutron star color table settings are shown below.</p>
+<div style="text-align: center;">
+<pre><code>&lt;img src=&quot;figures/disk_ct.jpeg&quot; alt=&quot;Figure 5: GUI Pseudocolor settings.&quot; width=&quot;70%&quot;&gt;
+&lt;p&gt;Figure 79: GUI Pseudocolor settings for Disk.&lt;/p&gt;</code></pre>
+</div>
+<div style="text-align: center;">
+<pre><code>&lt;img src=&quot;figures/ns_ct.jpeg&quot; alt=&quot;Figure 5: GUI Pseudocolor settings.&quot; width=&quot;70%&quot;&gt;
+&lt;p&gt;Figure 80: GUI Pseudocolor settings for Neutron Star.&lt;/p&gt;</code></pre>
+</div>
+<p>Anything else would be the same.</p>
+<p>This is it. Your final plot might resemble something like this.</p>
+<figure>
+<img src="figures/lognorm_noCT.jpeg" alt="No annotations" /><figcaption aria-hidden="true">No annotations</figcaption>
+</figure>
+<div style="text-align: center;">
+<p>
+Figure 81: Log Normalized density plot
+</p>
+</div>
+<p>You probably have noticed that there is an arrow on the plot, indicating the direction of rotation of the neutron star.</p>
+<p>Our next topic will be how to make one.</p>
+<h2 id="adding-spin-arrow">Adding Spin Arrow</h2>
+<p>To add a vector, we need a VTK file, which you will probably know if you have read the previous sections of the manual.</p>
+<p>In my case, the VTK was trivial, and an example file can be found again in my GitHub repo.</p>
+<p>To inspect the direction of the spin arrow, you might need to look up rnsphyseq_v1.dat or nstpar.dat (which is in my case).</p>
+<p>Then, as usual, you load the VTK file into VisIt.</p>
+<p>After adding the VTK as a vector field, here are some things to adjust for this case.</p>
+<p>First, we only need one large vector arrow for this case to indicate the spin of the neutron star, so you want to set the number of vectors to 1 as below.</p>
+<div style="text-align: center;">
+<pre><code>&lt;img src=&quot;figures/vector1.jpeg&quot; alt=&quot;Figure 5: GUI Pseudocolor settings.&quot; width=&quot;70%&quot;&gt;
+&lt;p&gt;Figure 82: Number of Vectors.&lt;/p&gt;</code></pre>
+</div>
+<p>Then, we choose a single color and untick the legend for clarity of the image.</p>
+<div style="text-align: center;">
+<pre><code>&lt;img src=&quot;figures/vector2.jpeg&quot; alt=&quot;Figure 5: GUI Pseudocolor settings.&quot; width=&quot;70%&quot;&gt;
+&lt;p&gt;Figure 83: Setting color of the vector.&lt;/p&gt;</code></pre>
+</div>
+<p>Finally, we need to set the size and scale of the arrow. As usual, my settings are below, and you might need to experiment yourself.</p>
+<div style="text-align: center;">
+<pre><code>&lt;img src=&quot;figures/vector3.jpeg&quot; alt=&quot;Figure 5: GUI Pseudocolor settings.&quot; width=&quot;70%&quot;&gt;
+&lt;p&gt;Figure 84: Adjusting the size of the vector.&lt;/p&gt;</code></pre>
+</div>
+<p>The equivalent CLI commands are below for reference.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>AddPlot(<span class="st">&quot;Vector&quot;</span>, <span class="st">&quot;v&quot;</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>VectorAtts <span class="op">=</span> VectorAttributes()</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Vector placement</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>VectorAtts.glyphLocation <span class="op">=</span> VectorAtts.AdaptsToMeshResolution</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>VectorAtts.useStride <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>VectorAtts.stride <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>VectorAtts.nVectors <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>VectorAtts.origOnly <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Vector appearance</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>VectorAtts.glyphType <span class="op">=</span> VectorAtts.Arrow</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>VectorAtts.vectorOrigin <span class="op">=</span> VectorAtts.Tail</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>VectorAtts.lineStem <span class="op">=</span> VectorAtts.Cylinder</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>VectorAtts.geometryQuality <span class="op">=</span> VectorAtts.High</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>VectorAtts.lineWidth <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>VectorAtts.stemWidth <span class="op">=</span> <span class="fl">0.05</span></span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>VectorAtts.headSize <span class="op">=</span> <span class="fl">0.2</span></span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>VectorAtts.headOn <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>VectorAtts.scale <span class="op">=</span> <span class="dv">120</span></span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>VectorAtts.scaleByMagnitude <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>VectorAtts.autoScale <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>VectorAtts.colorByMag <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>VectorAtts.useLegend <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>VectorAtts.vectorColor <span class="op">=</span> (<span class="dv">255</span>, <span class="dv">0</span>, <span class="dv">255</span>, <span class="dv">255</span>)</span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a>VectorAtts.colorTableName <span class="op">=</span> <span class="st">&quot;Default&quot;</span></span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>VectorAtts.invertColorTable <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a>VectorAtts.minFlag <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a>VectorAtts.maxFlag <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a>VectorAtts.limitsMode <span class="op">=</span> VectorAtts.OriginalData</span>
+<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a>VectorAtts.<span class="bu">min</span> <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a>VectorAtts.<span class="bu">max</span> <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a>VectorAtts.animationStep <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a>SetPlotOptions(VectorAtts)</span>
+<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a>DrawPlots()</span></code></pre></div>
+<p>After these adjustments, your plot should look like this.</p>
+<div style="text-align: center;">
+<pre><code>&lt;img src=&quot;figures/Raw_noCT.jpeg&quot; alt=&quot;Figure 5: GUI Pseudocolor settings.&quot; width=&quot;90%&quot;&gt;
+&lt;p&gt;Figure 85: Final Plot&lt;/p&gt;</code></pre>
+</div>
+<p>That’s it! Thanks for reading.</p>
+</body>
+</html>
