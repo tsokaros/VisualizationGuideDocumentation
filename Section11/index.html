@@ -189,8 +189,10 @@
                         We therefore proceed directly to the stage where raw isosurface plots are created
                         for both the disk and the neutron star, as shown in the figure below.</p>
 
-                        <p style="text-align: center;"><img alt="Initial isosurface" src="figures/Initial_Isosurface.jpeg" />
-                        Figure 72: Raw isosurface visualization of the neutron star–disk system.</p>
+                        <figure style="text-align: center;">
+                            <img alt="Initial isosurface" src="figures/Initial_Isosurface.jpeg" />
+                            <figcaption>Figure 72: Raw isosurface visualization of the neutron star–disk system.</figcaption>
+                        </figure>
 
                         <p>Before proceeding further, we note a few visualization settings that help improve the clarity of the plots.
                         First, we remove the coordinate axes and bounding boxes so that only the color table remains visible
@@ -254,13 +256,17 @@ SetView3D(View3DAtts)
 
                         <p><a href="https://visit-sphinx-github-user-manual.readthedocs.io/en/develop/using_visit/MakingItPretty/View.html">https://visit-sphinx-github-user-manual.readthedocs.io/en/develop/using_visit/MakingItPretty/View.html</a></p>
 
-                        <p style="text-align: center;"><img alt="Figure 73: View Setting." src="figures/view.png" width="45%" />
-                        Figure 73: View Setting.</p>
+                        <figure style="text-align: center;">
+                            <img alt="Figure 73: View Setting." src="figures/view.png" width="45%" />
+                            <figcaption>Figure 73: View Setting.</figcaption>
+                        </figure>
 
                         <p>Now your plot should look something like this.</p>
 
-                        <p style="text-align: center;"><img alt="No annotations" src="figures/after_setup.png" />
-                        Figure 74: VisIt visualization after setup.</p>
+                        <figure style="text-align: center;">
+                            <img alt="No annotations" src="figures/after_setup.png" />
+                            <figcaption>Figure 74: VisIt visualization after setup.</figcaption>
+                        </figure>
 
                         <p>After the setup, we can proceed to the main procedure.</p>
 
@@ -278,8 +284,10 @@ SetView3D(View3DAtts)
 
                         <p><strong>Isosurface operator attributes → Select by -- N level --</strong></p>
 
-                        <p style="text-align: center;"><img alt="Figure 75: GUI Isosurface Level Setting." src="figures/iso.jpeg" width="55%" />
-                        Figure 75: GUI Isosurface Level Setting.</p>
+                        <figure style="text-align: center;">
+                            <img alt="Figure 75: GUI Isosurface Level Setting." src="figures/iso.jpeg" width="55%" />
+                            <figcaption>Figure 75: GUI Isosurface Level Setting.</figcaption>
+                        </figure>
 
                         <p>The settings for the CLI used in this example are shown below:</p>
 
@@ -307,8 +315,10 @@ SetOperatorOptions(IsosurfaceAtts, 0, 0)
 
                         <p>Finally, you might want to play with <strong><em>min</em></strong> and <strong><em>max</em></strong> in <strong>Pseudocolor</strong>.</p>
 
-                        <p style="text-align: center;"><img alt="Figure 76: GUI Pseudocolor settings." src="figures/pesudo.jpeg" width="50%" />
-                        Figure 76: GUI Pseudocolor settings.</p>
+                        <figure style="text-align: center;">
+                            <img alt="Figure 76: GUI Pseudocolor settings." src="figures/pesudo.jpeg" width="50%" />
+                            <figcaption>Figure 76: GUI Pseudocolor settings.</figcaption>
+                        </figure>
 
                         <p>The equivalent CLI commands for <strong>Pseudocolor</strong> settings of neutron star density are shown below as an example:</p>
 
